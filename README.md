@@ -60,7 +60,7 @@ git log
 git show id-de-commit
 ```
 
-
+* Para poder actualizar al original
 ```bash
 git push origin main
 ```
