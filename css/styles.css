@@ -15,7 +15,14 @@ h1 {
 }
 
 #div_temas {
-    display: block;
+    display: block;    
+}
+
+#div_temas > ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 20px;
 }
 
 .product_cell {
@@ -47,7 +54,7 @@ h1 {
 }
 
 .celular > h2 {
-    color: red;
+    color: red;    
 }
 
 .celular > h3 {
@@ -64,4 +71,38 @@ h1 {
     color: aqua;
     text-align: right;
     padding-right: 10px;
+}
+
+.laptop {
+    display: none;
+}
+
+.audifono {
+    display: none;
+}
+
+
+@media (min-width:600px){
+    .product {
+        width: 30%;
+    }
+    #div_temas{
+       flex-direction: row; 
+    }    
+
+    
+
+    
+}
+
+@media (min-width:900px){
+    #div_temas{
+       flex-direction: row; 
+    } 
+    .laptop {
+        display: block;
+    }
+    .audifono {
+        display: block;
+    }   
 }
