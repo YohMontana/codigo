@@ -5,6 +5,9 @@ class MyCard extends HTMLElement {
   constructor() {
     // usando supper() dentro del contructur vamos a podrear atributos propios
     super();
+    this.title="";
+    this.img="";
+    this.message = "";
   }
 
   // Para poder asignar html dentro de mi tag
@@ -12,14 +15,36 @@ class MyCard extends HTMLElement {
 
   // esta funcion se ejecuta de forma automatica
   // cuando nuestro component se crea en html
+
+  static get observedAttributes(){
+
+    return ["title", "message", "img" ];
+  }
+
+  attributeChangedCallback(name, _, newvalue) {
+    switch (name){
+      case "title":
+        this.title = newvalue;
+        break;
+      case "img":
+        this.img = newvalue;
+        break;
+      case "message":
+        this.message = newvalue;
+        break;
+        default:
+        break;
+    }    
+  }
+
   connectedCallback() {
     this.classList.add("col-12", "col-sm-4", "col-md-3");
     this.innerHTML = `
       <div class="card mt-5">
-        <img width="100%" class="card-img-top" src="https://as.com/futbol/imagenes/2005/11/28/mas_futbol/1133132416_740215_0000000001_noticia_grande.jpg" /> 
+        <img width="100%" class="card-img-top" src="${this.img}" /> 
         <div class="card-body">
-          <h5 class="card-title">Hola desde el componente</h5>
-          <p class="card-text">El mejor jugador del mundo recibiendo el balon de oro, porque es Messi</p>
+          <h5 class="card-title">${this.title}</h5>
+          <p class="card-text">${this.message}</p>
           <button class="btn btn-link">Leer mas</button>
         </div>
       </div>
